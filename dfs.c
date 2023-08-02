@@ -6,7 +6,7 @@
 /*   By: yusman <yusman@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 01:59:16 by yusman            #+#    #+#             */
-/*   Updated: 2023/04/15 00:04:45 by yusman           ###   ########.fr       */
+/*   Updated: 2023/08/02 15:29:51 by yusman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	check_mapfile_size(t_game *game)
 		i++;
 	game->size_y = i;
 }
-// here we check the map and put the size into map->size-x and map->size-y
 
 void	find_player(t_game *game)
 {
@@ -54,8 +53,6 @@ void	find_player(t_game *game)
 		free_and_exit(game);
 	}
 }
-// here we go through the whole map and find the player
-// and display an Error massage if there are more then 1 player found.
 
 void	find_exit(t_game *game)
 {
@@ -85,8 +82,6 @@ void	find_exit(t_game *game)
 	}
 	game->is_exit = 0;
 }
-// here we go through the whole map and find the Exit
-// and display an Error massage if there are more then 1 Exit found.
 
 int	validcheck(t_game *game, int x, int y)
 {
@@ -99,17 +94,22 @@ int	validcheck(t_game *game, int x, int y)
 
 void	dfs(t_game *game, int x, int y)
 {
+	int up = y - 1;
+	int left = x - 1;
+	int down = y + 1;
+	int right = x + 1;
+
 	game->valid[y][x] = 1;
 	if (game->mapcheck[y][x] == 'C')
 		game->is_coin++;
 	if (game->mapcheck[y][x] == 'E')
 		game->is_exit++;
-	if (validcheck(game, x, y - 1) == 0)
-		dfs(game, x, y -1);
-	if (validcheck(game, x + 1, y) == 0)
-		dfs(game, x + 1, y);
-	if (validcheck(game, x, y + 1) == 0)
-		dfs(game, x, y + 1);
-	if (validcheck(game, x - 1, y) == 0)
-		dfs(game, x - 1, y);
+	if (validcheck(game, x,up) == 0)
+		dfs(game, x, up);
+	if (validcheck(game, right, y) == 0)
+		dfs(game, right, y);
+	if (validcheck(game, x, down) == 0)
+		dfs(game, x, down);
+	if (validcheck(game, left, y) == 0)
+		dfs(game, left, y);
 }

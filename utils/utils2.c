@@ -6,7 +6,7 @@
 /*   By: yusman <yusman@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 19:49:13 by yusman            #+#    #+#             */
-/*   Updated: 2023/04/15 02:30:21 by yusman           ###   ########.fr       */
+/*   Updated: 2023/04/14 22:53:30 by yusman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ void	hashmaker(t_game *game)
 		i++;
 	}
 }
-// In this hashmaker function we set all the values of valid to 0
-//	this function will turn the whole map = 0 and then we use our dfs algorithm
 
 void	if_null_exit(char *file)
 {
@@ -65,8 +63,6 @@ void	free_and_exit(t_game *game)
 	free(game->map);
 	exit(EXIT_FAILURE);
 }
-// this function is used to free the map and mapcheck
-// we use if_null_exit function whenever we need to free
 
 int	bercheck(char *av)
 {
@@ -79,4 +75,3 @@ int	bercheck(char *av)
 	ft_printf("\n\nNot a valid .ber file\n\n");
 	exit(1);
 }
-// this is a simple function to check if the file name ends with ".ber" or not.

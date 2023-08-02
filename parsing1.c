@@ -6,7 +6,7 @@
 /*   By: yusman <yusman@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 03:22:43 by yusman            #+#    #+#             */
-/*   Updated: 2023/04/11 22:13:37 by yusman           ###   ########.fr       */
+/*   Updated: 2023/04/03 02:08:14 by yusman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,17 @@ char	*readmap(t_game *game, char *file)
 		game->temp = get_next_line(game->fd);
 		game->totallines++;
 	}
-	// we get the amount of total lines in the file with the help of this while loop.
 	close(game->fd);
 	game->fd = open(file, O_RDONLY);
 	game->map = mallocing(game->map, game->totallines * game->linelength);
-	// we allocate memory here to game->map with a function called "mallocing" which basicaly alloctes memory using malloc.
-	//and the memory size allocated is the total lines * linelength of the file.
 	while (game->y < game->totallines)
 	{
 		game->temp = get_next_line(game->fd);
 		game->j = 0;
-
 		while (game->j < game->linelength)
-		{
 			game->map[game->i++] = game->temp[game->j++];
-		}
-		// in this loop we get the firstline and copy it to game->map
 		game->y++;
 	}
-	// after those nested while loops we get the whole file copied to game->map
 	game->map[game->i] = '\0';
 	return (game->map);
 }
@@ -74,8 +66,6 @@ void	mapsize(t_game *game)
 		free_and_exit(game);
 	}
 }
-// here we are checking for errors in thhe map files
-// and if there are errors we display the message on the standard in
 
 void	wallchecker_x(t_game *game)
 {

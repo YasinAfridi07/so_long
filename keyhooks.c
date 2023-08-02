@@ -6,7 +6,7 @@
 /*   By: yusman <yusman@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 01:52:38 by yusman            #+#    #+#             */
-/*   Updated: 2023/04/07 22:02:47 by yusman           ###   ########.fr       */
+/*   Updated: 2023/08/02 15:16:36 by yusman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ void	movescount(t_game *game, int x, int y, int flag)
 	game->p_x = x;
 	game->p_y = y;
 }
-// here we are counting the moves that should be displayed on the shell.
-// and we also count the coins in the map.
 
 void	win(t_game *game)
 {
@@ -35,7 +33,6 @@ void	win(t_game *game)
 		close_window(game);
 	}
 }
-// here we display "you win" when the coins are all collected and the player is at the Exit.
 
 void	mark_exit(t_game *game, int x, int y)
 {
@@ -45,7 +42,6 @@ void	mark_exit(t_game *game, int x, int y)
 		game->markexit = 0;
 	}
 }
-// 
 
 int	moves(t_game *game, int x, int y)
 {
@@ -69,23 +65,29 @@ int	moves(t_game *game, int x, int y)
 	}
 	return (0);
 }
-// this function is easy to understand, here we say if the Character is at the exit and the coins are not all collected,
-// we just place the images and dont allow the game to end since we havent taken all the coins.
 
 int	keyhook(int keycode, t_game *game)
 {
-	if (keycode == 13)
-		moves(game, 0, -1);
-	else if (keycode == 0)
-		moves(game, -1, 0);
-	else if (keycode == 1)
-		moves(game, 0, 1);
-	else if (keycode == 2)
-		moves(game, 1, 0);
-	else if (keycode == 53)
+	int up = 13;
+	int down = 1;
+	int right = 2;
+	int left = 0;
+	int esc = 53;
+
+	int move_up_on_y = -1;
+	int move_left_on_x = -1;
+	int move_down_on_y = 1;
+	int move_right_on_x = 1;
+
+	if (keycode == up)
+		moves(game, 0, move_up_on_y);
+	else if (keycode == left)
+		moves(game, move_left_on_x, 0);
+	else if (keycode == down)
+		moves(game, 0, move_down_on_y);
+	else if (keycode == right)
+		moves(game, move_right_on_x, 0);
+	else if (keycode == esc)
 		close_window(game);
 	return (0);
 }
-// here we define our keys.. i have used here the keyword code
-// 13 being the 'W' key, 0 is the 'A' key, 1 is the 'S' key and 2 is the 'D' key;
-// in this function we say if those keycode is true we call the moves function to make the move.

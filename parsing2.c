@@ -6,7 +6,7 @@
 /*   By: yusman <yusman@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 03:22:28 by yusman            #+#    #+#             */
-/*   Updated: 2023/04/17 17:59:13 by yusman           ###   ########.fr       */
+/*   Updated: 2023/04/14 22:45:31 by yusman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,6 @@ void	charactercheck(t_game *game)
 		i++;
 	}
 }
-// here we check if there is something more then just the allowed characters in the map
-
-
 
 void	draw_img(t_game *game, char *path, int x, int y)
 {
@@ -46,8 +43,6 @@ void	draw_img(t_game *game, char *path, int x, int y)
 	mlx_put_image_to_window(game->mlx, game->mlx_window, game->img, x, y);
 	mlx_destroy_image(game->mlx, game->img);
 }
-// draw_img this is where we take the xpm files and put them in game->img,
-//and then put the img to the window and later destroy the img
 
 void	pick_img(t_game *game, char c, int x, int y)
 {
@@ -66,7 +61,6 @@ void	pick_img(t_game *game, char c, int x, int y)
 		game->p_y = y;
 	}
 }
-// here we just initialize the characters to their to images.
 
 void	draw_map(t_game *game)
 {
@@ -95,4 +89,3 @@ void	close_window(t_game *game)
 	free_split(game->mapcheck);
 	exit(0);
 }
-// used to clear window and destroy window and free everything.

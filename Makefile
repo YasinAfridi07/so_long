@@ -6,7 +6,7 @@
 #    By: yusman <yusman@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/02 08:08:39 by yusman            #+#    #+#              #
-#    Updated: 2023/04/02 20:00:35 by yusman           ###   ########.fr        #
+#    Updated: 2023/04/14 22:28:51 by yusman           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC	=	so_long.c parsing1.c parsing2.c keyhooks.c dfs.c \
 
 OBJ	= $(SRC:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -fsanitize=leaks -g3
 
 NAME = so_long
 

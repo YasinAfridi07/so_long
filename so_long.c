@@ -6,7 +6,7 @@
 /*   By: yusman <yusman@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 08:19:39 by yusman            #+#    #+#             */
-/*   Updated: 2023/04/17 17:56:59 by yusman           ###   ########.fr       */
+/*   Updated: 2023/04/14 22:52:46 by yusman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	validchecker(t_game *game)
 		free_and_exit(game);
 	}
 }
-// here we just go through the map and check for error and display the errors.
 
 void	windowmaker(t_game *game)
 {
